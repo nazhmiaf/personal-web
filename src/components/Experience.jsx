@@ -130,7 +130,7 @@ const Experience = () => {
                   <p className="font-display text-xs text-neutral/50 mt-0.5">
                     {exp.type}
                   </p>
-                  <p className="text-neutral/70 leading-relaxed mt-3 text-sm">
+                  <p className="text-neutral/70 text-justify leading-relaxed mt-3 text-sm">
                     {exp.description}
                   </p>
                 </div>
