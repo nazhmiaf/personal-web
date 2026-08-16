@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import bgDark from "../assets/images/paper-texture-white.webp";
 
 const experiences = [
@@ -39,33 +40,81 @@ const experiences = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -30 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
 const Experience = () => {
   return (
     <section
       id="experience"
-      className="bg-cover bg-center bg-no-repeat"
+      className="bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: `url(${bgDark})` }}
     >
       <div className="max-w-3xl mx-auto">
         {/* Heading */}
-        <h2 className="section-heading-dark text-center mb-16">Experience</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="section-heading-dark text-center mb-16"
+        >
+          Experience
+        </motion.h2>
 
         {/* Timeline */}
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-neutral/20 hidden md:block" />
+          <motion.div
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            style={{ originY: 0 }}
+            className="absolute left-6 top-0 bottom-0 w-px bg-neutral/20 hidden md:block"
+          />
 
-          <div className="space-y-14">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="space-y-14"
+          >
             {experiences.map((exp, idx) => (
-              <div key={idx} className="flex gap-6 md:gap-8">
+              <motion.div
+                key={idx}
+                variants={itemVariants}
+                className="flex gap-6 md:gap-8"
+              >
                 {/* Avatar */}
-                <div className="flex-shrink-0 relative z-10">
+                <motion.div
+                  whileHover={{ scale: 1.15 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex-shrink-0 relative z-10"
+                >
                   <img
                     src={exp.avatar}
                     alt={exp.company}
-                    className="w-12 h-12 rounded-full border-2 border-primary/40"
+                    className="w-12 h-12 rounded-full border-2 border-primary/40 shadow-md"
                   />
-                </div>
+                </motion.div>
 
                 {/* Content */}
                 <div className="flex-1">
@@ -85,9 +134,9 @@ const Experience = () => {
                     {exp.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
