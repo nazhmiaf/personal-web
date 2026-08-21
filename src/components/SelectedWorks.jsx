@@ -92,12 +92,12 @@ const SelectedWorks = () => {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group cursor-pointer block rounded-2xl bg-neutral-900/60 border border-white/10 hover:border-primary/50 transition-colors duration-500 overflow-hidden shadow-xl hover:shadow-primary/10 h-full flex flex-col"
+                    className="group cursor-pointer block rounded-md bg-neutral-900/60 border border-white/10 hover:border-primary/50 transition-colors duration-500 overflow-hidden shadow-xl hover:shadow-primary/10 h-full flex flex-col"
                   >
                     <CardInner project={project} hasUrl={hasUrl} />
                   </a>
                 ) : (
-                  <div className="group cursor-default block rounded-2xl bg-neutral-900/60 border border-white/10 hover:border-amber-500/30 transition-colors duration-500 overflow-hidden shadow-xl h-full flex flex-col">
+                  <div className="group cursor-default block rounded-md bg-neutral-900/60 border border-white/10 hover:border-amber-500/30 transition-colors duration-500 overflow-hidden shadow-xl h-full flex flex-col">
                     <CardInner project={project} hasUrl={hasUrl} />
                   </div>
                 )}
@@ -181,7 +181,7 @@ const CardInner = ({ project, hasUrl }) => (
           {project.tags.map((tag, tIdx) => (
             <span
               key={tIdx}
-              className="text-[11px] font-display text-primary/90 bg-primary/10 px-2.5 py-0.5 rounded-md border border-primary/20"
+              className="text-[11px] font-display text-primary/90 bg-primary/10 px-2.5 py-0.5 rounded-full border border-primary/20"
             >
               {tag}
             </span>
