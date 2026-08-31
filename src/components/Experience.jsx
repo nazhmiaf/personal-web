@@ -8,7 +8,7 @@ const experiences = [
     type: "Technology Company",
     period: "Jul 2026 - Present",
     description:
-      "Developing and maintaining frontend features for web applications using modern JavaScript frameworks.",
+      "Maintaining  and fixing bugs enhanced Engage Web App and Ops Panel Engage using Next.js, focusing on clean code, maintainability, and scalable UI architecture.",
     avatar: "https://ui-avatars.com/api/?name=NL&background=C5A059&color=261900&size=48&rounded=true&bold=true",
   },
   {
