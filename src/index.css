@@ -6,11 +6,15 @@
   --font-display: "Hanken Grotesk", system-ui, sans-serif;
   --font-body: "Source Serif 4", Georgia, serif;
   --font-inter: "Inter", system-ui, sans-serif;
+  /* Darker gold for text on light/paper sections */
+  --color-primary-ink: #7A5A1E;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Keep anchored sections clear of the fixed navbar */
+    scroll-padding-top: 4.5rem;
   }
 
   body {

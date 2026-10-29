@@ -1,78 +1,78 @@
-import { ArrowUpRight, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
 
-const CardInner = ({ project, hasUrl }) => (
+const CardInner = ({ project, hasUrl, index }) => (
   <>
-    {/* Image Container with Browser Window UI Frame */}
-    <div className="relative aspect-[16/10] overflow-hidden bg-black/40 border-b border-white/10">
-      
-
-      {/* Status Badge */}
-      {hasUrl ? (
-        <div className="absolute top-3 right-3 z-20 flex items-center gap-1.5 bg-black/60 backdrop-blur-md text-primary font-display text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border border-primary/40">
-          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-          Online
-        </div>
-      ) : (
-        <div className="absolute top-3 right-3 z-20 flex items-center gap-1.5 bg-black/70 backdrop-blur-md text-amber-400 font-display text-[10px] font-semibold tracking-wider uppercase px-2.5 py-1 rounded-full border border-amber-500/40">
-          <Lock className="w-3 h-3 text-amber-400" />
-          {project.badgeText || "Internal Only"}
-        </div>
-      )}
-
-      {/* Project Image */}
+    {/* Project Image */}
+    <div className="relative aspect-[16/10] overflow-hidden border-b border-white/10 bg-black/40">
       <img
         src={project.image}
         alt={project.title}
-        className="w-full h-full object-cover object-top group-hover:scale-105 group-hover:brightness-105 transition-all duration-700 ease-out"
+        className={`w-full h-full object-cover object-top grayscale-[35%] group-hover:grayscale-0 transition-all duration-700 ease-out ${
+          hasUrl ? "group-hover:scale-[1.03]" : ""
+        }`}
       />
-
-      {/* Hover Overlay with Action Button */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-        {hasUrl ? (
-          <span className="inline-flex items-center gap-2 bg-primary text-primary-content font-display text-xs font-semibold px-4 py-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-            Visit Website <ArrowUpRight className="w-4 h-4" />
-          </span>
-        ) : (
-          <span className="inline-flex items-center gap-2 bg-primary text-primary-content font-display text-xs font-semibold px-4 py-2 rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-            <Lock className="w-3.5 h-3.5 text-primary-content" />
-            {project.accessNote || "KAI Credentials Required"}
-          </span>
-        )}
-      </div>
     </div>
 
     {/* Content Details */}
-    <div className="p-6 flex-1 flex flex-col justify-between">
-      <div>
-        <div className="flex items-center justify-between gap-2 mb-2">
-          <h3 className="font-display text-xl font-bold text-secondary-content group-hover:text-primary transition-colors flex items-center gap-1.5">
-            {project.title}
-            {hasUrl ? (
-              <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300 text-primary" />
-            ) : (
-              <Lock className="w-3.5 h-3.5 text-amber-400/80 ml-0.5" />
-            )}
-          </h3>
-        </div>
-
-        <p className="font-inter text-sm text-secondary-content/70 leading-relaxed mb-4">
-          {project.description}
-        </p>
+    <div className="p-5 sm:p-6 md:p-7 flex-1 flex flex-col">
+      <div className="flex items-baseline justify-between gap-4 font-display text-[11px] uppercase tracking-[2px]">
+        <span className="text-primary tabular-nums">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        {hasUrl ? (
+          <span className="text-secondary-content/50 group-hover:text-primary transition-colors">
+            Visit site
+          </span>
+        ) : (
+          <span className="inline-flex items-center gap-1.5 text-amber-400/80">
+            <Lock className="w-3 h-3" />
+            {project.badgeText || "Internal Only"}
+          </span>
+        )}
       </div>
 
-      {/* Tech Tags */}
-      {project.tags && (
-        <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5">
-          {project.tags.map((tag, tIdx) => (
-            <span
-              key={tIdx}
-              className="text-[11px] font-display text-primary/90 bg-primary/10 px-2.5 py-0.5 rounded-full border border-primary/20"
-            >
-              {tag}
-            </span>
-          ))}
+      <h3 className="font-display text-xl sm:text-2xl font-bold text-secondary-content mt-3 leading-tight">
+        {project.title}
+      </h3>
+
+      <p className="font-body text-[15px] text-secondary-content/65 leading-relaxed mt-2 mb-6">
+        {project.description}
+        {!hasUrl && project.accessNote && (
+          <span className="block text-sm italic text-secondary-content/40 mt-1">
+            {project.accessNote}
+          </span>
+        )}
+      </p>
+
+      {/* Role & Stack */}
+      <dl className="mt-auto grid grid-cols-2 border-t border-white/10 pt-4 font-display">
+        <div>
+          <dt className="text-[10px] uppercase tracking-[2px] text-secondary-content/40">
+            Role
+          </dt>
+          <dd className="text-sm font-medium text-secondary-content mt-1.5">
+            {project.role}
+          </dd>
         </div>
-      )}
+        {project.tags && (
+          <div>
+            <dt className="text-[10px] uppercase tracking-[2px] text-secondary-content/40">
+              Stack
+            </dt>
+            <dd className="flex items-center gap-3 mt-1.5">
+              {project.tags.map((tech) => (
+                <img
+                  key={tech.name}
+                  src={tech.icon}
+                  alt={tech.name}
+                  title={tech.name}
+                  className={`w-5 h-5 ${tech.invert ? "invert" : ""}`}
+                />
+              ))}
+            </dd>
+          </div>
+        )}
+      </dl>
     </div>
   </>
 );

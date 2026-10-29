@@ -78,7 +78,7 @@ const Navbar = () => {
 
         {/* Desktop Download CV button */}
         <motion.a
-          href="/cv/Nazhmi Ahmad Fauzan_CV.pdf"
+          href="/cv/Nazhmi Ahmad Fauzan-resume-oct26.pdf"
           download="CV_Nazhmi Ahmad Fauzan.pdf"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

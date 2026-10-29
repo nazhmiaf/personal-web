@@ -28,7 +28,7 @@ const Cta = () => {
           href="mailto:nazhmiahmadf@gmail.com"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center gap-2 font-display text-lg md:text-xl text-primary hover:text-primary/80 transition-colors mt-8 group"
+          className="inline-flex items-center gap-2 font-display text-base sm:text-lg md:text-xl text-primary break-all hover:text-primary/80 transition-colors mt-8 group"
         >
           nazhmiahmadf@gmail.com
           <motion.span

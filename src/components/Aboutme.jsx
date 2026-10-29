@@ -45,7 +45,7 @@ const Aboutme = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full md:w-5/12 flex-shrink-0"
+          className="w-full max-w-sm md:max-w-none md:w-5/12 flex-shrink-0"
         >
           <div className="relative">
             <div className="aspect-[4/5] overflow-hidden">
@@ -68,14 +68,14 @@ const Aboutme = () => {
         >
           <h2 className="section-heading-light mb-6">The Person Behind the Code</h2>
 
-          <p className="text-secondary-content/70 text-justify leading-relaxed mb-4">
+          <p className="text-secondary-content/70 md:text-justify leading-relaxed mb-4">
             I am an Informatics graduate from Telkom University, passionate about
             web development and focused on building modern web applications using
             React JS on the frontend, as well as Laravel and Express JS for
             backend and API development.
           </p>
 
-          <p className="text-secondary-content/70 text-justify leading-relaxed mb-8">
+          <p className="text-secondary-content/70 md:text-justify leading-relaxed mb-8">
             Experienced in working on real-world projects, highly adaptable to
             new technologies, and accustomed to working in a structured manner to
             deliver efficient, scalable, and user-friendly web applications.
@@ -90,7 +90,7 @@ const Aboutme = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex flex-wrap gap-5"
+            className="grid grid-cols-4 gap-y-5 sm:flex sm:flex-wrap sm:gap-5"
           >
             {techStack.map((tech) => (
               <motion.div

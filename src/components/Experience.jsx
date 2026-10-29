@@ -3,40 +3,43 @@ import bgDark from "../assets/images/paper-texture-white.webp";
 
 const experiences = [
   {
-    role: "Internship - Frontend Developer",
+    role: "Frontend Developer",
+    employment: "Internship",
     company: "PT NoLimit Indonesia",
-    type: "Technology Company",
-    period: "Jul 2026 - Present",
+    industry: "Technology Company",
+    period: "Jul 2026 - Oct 2026",
+    stack: ["Next.js"],
     description:
-      "Maintaining  and fixing bugs enhanced Engage Web App and Ops Panel Engage using Next.js, focusing on clean code, maintainability, and scalable UI architecture.",
-    avatar: "https://ui-avatars.com/api/?name=NL&background=C5A059&color=261900&size=48&rounded=true&bold=true",
+      "Maintaining and fixing bugs enhanced Engage Web App and Ops Panel Engage using Next.js, focusing on clean code, maintainability, and scalable UI architecture.",
   },
   {
-    role: "Freelance - Frontend Developer",
+    role: "Frontend Developer",
+    employment: "Freelance",
     company: "PT CV. Tiga Permata Agri Lestari",
-    type: "Seed & Agricultural Company",
+    industry: "Seed & Agricultural Company",
     period: "Sep 2025 - Dec 2025",
+    stack: ["React.js", "REST API"],
     description:
       "Built responsive web interfaces using React.js and integrated RESTful APIs for seamless data communication.",
-    avatar: "https://ui-avatars.com/api/?name=TP&background=C5A059&color=261900&size=48&rounded=true&bold=true",
   },
   {
-    role: "Internship - Software Engineer",
+    role: "Software Engineer",
+    employment: "Internship",
     company: "PT Kereta Api Indonesia (Persero)",
-    type: "Indonesia National Railway Company",
+    industry: "Indonesia National Railway Company",
     period: "Jun 2025 - Aug 2025",
+    stack: ["Flutter", "React.js", "Laravel", "SAP"],
     description:
       "Developed a Material Stock mobile app with Flutter, integrated SAP via RESTful APIs, and built a CMS using React.js & Laravel.",
-    avatar: "https://ui-avatars.com/api/?name=KAI&background=C5A059&color=261900&size=48&rounded=true&bold=true",
   },
   {
-    role: "Project Based - Staff Administrator",
+    role: "Staff Administrator",
+    employment: "Project Based",
     company: "PT Artristik Studio Bandung",
-    type: "IT Consultant Company",
+    industry: "IT Consultant Company",
     period: "Jan 2024 - Mar 2024",
     description:
       "Handled data verification and maintenance of AML beneficiaries, ensuring accuracy and regulatory compliance.",
-    avatar: "https://ui-avatars.com/api/?name=AS&background=C5A059&color=261900&size=48&rounded=true&bold=true",
   },
 ];
 
@@ -45,17 +48,17 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.12,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
@@ -66,78 +69,66 @@ const Experience = () => {
       className="bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: `url(${bgDark})` }}
     >
-      <div className="max-w-3xl mx-auto">
-        {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="section-heading-dark text-center mb-16"
+          className="mb-8 md:mb-12"
         >
-          Experience
-        </motion.h2>
+          <span className="font-display text-xs uppercase tracking-[3px] text-primary-ink font-semibold">
+            Experience
+          </span>
+          <h2 className="section-heading-dark mt-1">Where I've worked</h2>
+        </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            style={{ originY: 0 }}
-            className="absolute left-6 top-0 bottom-0 w-px bg-neutral/20 hidden md:block"
-          />
+        {/* Experience list */}
+        <motion.ol
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="border-b border-neutral/25"
+        >
+          {experiences.map((exp, idx) => (
+            <motion.li
+              key={idx}
+              variants={itemVariants}
+              className="grid md:grid-cols-[11rem_1fr] md:items-baseline gap-2 md:gap-10 py-7 md:py-8 border-t border-neutral/25"
+            >
+              {/* Period & employment type */}
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 md:block font-display">
+                <p className="text-sm font-semibold text-primary-ink tabular-nums">
+                  {exp.period}
+                </p>
+                <p className="text-sm text-neutral/70 md:mt-1">
+                  {exp.employment}
+                </p>
+              </div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="space-y-14"
-          >
-            {experiences.map((exp, idx) => (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                className="flex gap-6 md:gap-8"
-              >
-                {/* Avatar */}
-                <motion.div
-                  whileHover={{ scale: 1.15 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="flex-shrink-0 relative z-10"
-                >
-                  <img
-                    src={exp.avatar}
-                    alt={exp.company}
-                    className="w-12 h-12 rounded-full border-2 border-primary/40 shadow-md"
-                  />
-                </motion.div>
-
-                {/* Content */}
-                <div className="flex-1">
-                  <span className="font-display text-xs uppercase tracking-[2px] text-primary font-semibold">
-                    {exp.period}
-                  </span>
-                  <h3 className="font-display text-xl md:text-2xl font-bold text-neutral mt-1">
-                    {exp.role}
-                  </h3>
-                  <p className="font-display text-sm text-neutral/80 font-medium mt-0.5">
-                    {exp.company}
+              {/* Role details */}
+              <div>
+                <h3 className="font-display text-xl md:text-2xl font-bold text-neutral leading-snug">
+                  {exp.role}
+                </h3>
+                <p className="font-display text-base text-neutral font-semibold mt-1">
+                  {exp.company}
+                  <span className="text-neutral/60 font-normal"> · {exp.industry}</span>
+                </p>
+                <p className="font-body text-[15px] text-neutral/80 leading-relaxed mt-3 max-w-3xl">
+                  {exp.description}
+                </p>
+                {exp.stack && (
+                  <p className="font-display text-xs uppercase tracking-[2px] text-neutral/60 mt-4">
+                    {exp.stack.join(" / ")}
                   </p>
-                  <p className="font-display text-xs text-neutral/50 mt-0.5">
-                    {exp.type}
-                  </p>
-                  <p className="text-neutral/70 text-justify leading-relaxed mt-3 text-sm">
-                    {exp.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+                )}
+              </div>
+            </motion.li>
+          ))}
+        </motion.ol>
       </div>
     </section>
   );
