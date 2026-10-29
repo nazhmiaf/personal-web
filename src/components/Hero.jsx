@@ -20,7 +20,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-        className="font-body italic text-neutral/60 text-sm md:text-base mt-6 max-w-lg"
+        className="font-body italic text-neutral/80 text-sm md:text-base mt-6 max-w-lg"
       >
         Building scalable, high-performance web applications with clean code
         and modern technologies.

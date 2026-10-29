@@ -6,7 +6,7 @@ const experiences = [
     role: "Frontend Developer",
     employment: "Internship",
     company: "PT NoLimit Indonesia",
-    industry: "Technology Company",
+    industry: "Online Media Technology Partner",
     period: "Jul 2026 - Oct 2026",
     stack: ["Next.js"],
     description:
@@ -100,7 +100,7 @@ const Experience = () => {
             >
               {/* Period & employment type */}
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 md:block font-display">
-                <p className="text-sm font-semibold text-primary-ink tabular-nums">
+                <p className="text-md font-semibold text-primary-ink tabular-nums">
                   {exp.period}
                 </p>
                 <p className="text-sm text-neutral/70 md:mt-1">
@@ -120,11 +120,11 @@ const Experience = () => {
                 <p className="font-body text-[15px] text-neutral/80 leading-relaxed mt-3 max-w-3xl">
                   {exp.description}
                 </p>
-                {exp.stack && (
+                {/* {exp.stack && (
                   <p className="font-display text-xs uppercase tracking-[2px] text-neutral/60 mt-4">
                     {exp.stack.join(" / ")}
                   </p>
-                )}
+                )} */}
               </div>
             </motion.li>
           ))}

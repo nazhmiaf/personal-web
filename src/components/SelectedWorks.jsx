@@ -4,17 +4,26 @@ import nakaseed from "../assets/images/projects/nakaseed.webp";
 import himakutaf from "../assets/images/projects/himakutaf.webp";
 import resume from "../assets/images/projects/resume.png"
 import cms from "../assets/images/projects/cms.webp";
+import personal from '../assets/images/projects/web.png'
 import CardInner from "./CardInner";
 
-const devicon = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${path}`;
+// Simple Icons in their brand color; pass a color for brands whose default is black
+const simpleIcon = (slug, color = "") =>
+  `https://cdn.simpleicons.org/${slug}${color && `/${color}`}`;
 
 const techStack = {
-  react: { name: "React.js", icon: devicon("react/react-original.svg") },
-  nextjs: { name: "Next.js", icon: devicon("nextjs/nextjs-original.svg"), invert: true },
-  fastapi: { name: "FastAPI", icon: devicon("fastapi/fastapi-original.svg") },
-  laravel: { name: "Laravel", icon: devicon("laravel/laravel-original.svg") },
-  mongodb: { name: "MongoDB", icon: devicon("mongodb/mongodb-original.svg") },
-  express: { name: "Express.js", icon: devicon("express/express-original.svg"), invert: true },
+  react: { name: "React.js", icon: simpleIcon("react") },
+  nextjs: { name: "Next.js", icon: simpleIcon("nextdotjs", "white") },
+  fastapi: { name: "FastAPI", icon: simpleIcon("fastapi") },
+  laravel: { name: "Laravel", icon: simpleIcon("laravel") },
+  mongodb: { name: "MongoDB", icon: simpleIcon("mongodb") },
+  express: { name: "Express.js", icon: simpleIcon("express", "white") },
+  mysql: { name: "MySQL", icon: simpleIcon("mysql") },
+  postgre: { name: "PostgreSQL", icon: simpleIcon("postgresql") },
+  supabase: { name: "Supabase", icon: simpleIcon("supabase") },
+  tailwind: { name: "TailwindCSS", icon: simpleIcon("tailwindcss") },
+  nodejs: { name: "Node.js", icon: simpleIcon("nodedotjs") },
+  typescript: { name: "TypeScript", icon: simpleIcon("typescript") },
 };
 
 const projects = [
@@ -24,7 +33,7 @@ const projects = [
     description: "Seed & Agrikultur company profile with chatbot",
     image: nakaseed,
     url: "https://nakaseed-frontend.vercel.app/",
-    tags: [techStack.react, techStack.fastapi],
+    tags: [techStack.react, techStack.nodejs, techStack.fastapi, techStack.supabase],
     isInternal: false,
   },
   {
@@ -33,7 +42,18 @@ const projects = [
     description: "Application for managing material stock for PT KAI",
     image: cms,
     url: null,
-    tags: [techStack.react, techStack.laravel],
+    tags: [techStack.react, techStack.nodejs, techStack.laravel, techStack.postgre],
+    isInternal: true,
+    badgeText: "Internal Only",
+    accessNote: "KAI Credentials Required",
+  },
+  {
+    title: "NazhmiAF Personal Website",
+    role: "Frontend",
+    description: "My Portofolio Website",
+    image: personal,
+    url: 'https://nazhmiaf.com/',
+    tags: [techStack.react, techStack.nodejs, techStack.tailwind],
     isInternal: true,
     badgeText: "Internal Only",
     accessNote: "KAI Credentials Required",
@@ -44,7 +64,7 @@ const projects = [
     description: "Website for Telkom Accounting Fair (Himaku) 2026.",
     image: himakutaf,
     url: "https://himakutaf.com/",
-    tags: [techStack.nextjs],
+    tags: [techStack.nextjs, techStack.typescript, techStack.mysql],
     isInternal: false,
   },
   {
@@ -53,7 +73,7 @@ const projects = [
     description: "Personal project application",
     image: resume,
     url: "https://zan-resume-app.vercel.app/",
-    tags: [techStack.mongodb, techStack.react, techStack.express],
+    tags: [techStack.mongodb, techStack.nodejs, techStack.react, techStack.express],
     isInternal: false,
   },
 ];

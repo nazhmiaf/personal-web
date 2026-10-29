@@ -7,8 +7,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navlinks = [
-    { name: "Projects", href: "#projects", icon: FolderKanban },
     { name: "About", href: "#about-me", icon: User },
+    { name: "Projects", href: "#projects", icon: FolderKanban },
     { name: "Experience", href: "#experience", icon: Briefcase },
   ];
 

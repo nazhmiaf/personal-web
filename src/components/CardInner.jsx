@@ -47,10 +47,10 @@ const CardInner = ({ project, hasUrl, index }) => (
       {/* Role & Stack */}
       <dl className="mt-auto grid grid-cols-2 border-t border-white/10 pt-4 font-display">
         <div>
-          <dt className="text-[10px] uppercase tracking-[2px] text-secondary-content/40">
+          <dt className="text-[10px] uppercase text-lg tracking-[2px] text-secondary-content/40">
             Role
           </dt>
-          <dd className="text-sm font-medium text-secondary-content mt-1.5">
+          <dd className="text-md font-medium text-secondary-content mt-1.5">
             {project.role}
           </dd>
         </div>
@@ -66,7 +66,7 @@ const CardInner = ({ project, hasUrl, index }) => (
                   src={tech.icon}
                   alt={tech.name}
                   title={tech.name}
-                  className={`w-5 h-5 ${tech.invert ? "invert" : ""}`}
+                  className={`w-7 h-7 ${tech.invert ? "invert" : ""}`}
                 />
               ))}
             </dd>
